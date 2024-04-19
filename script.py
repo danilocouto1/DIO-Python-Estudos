@@ -1,48 +1,61 @@
-print(
-    """Bem vindo ao banco DIO
-        Qual operação deseja executar?
-        """
-)
-section = -1
 conta_global = 0
 
 
-def depositar(deposito: int):
+def depositar(valor):
     global conta_global
-    conta_global += deposito
+    if valor > 0:
+        conta_global += valor
+        print("Depósito efetuado com sucesso.")
+    else:
+        print("Valor inválido para depósito!")
 
 
-def sacar(saque: int):
+def sacar(valor):
     global conta_global
-    if saque > conta_global:
+    if valor > conta_global:
         print("Valor acima do permitido!")
-    elif saque > 0:
-        conta_global -= saque
+    elif valor > 0:
+        conta_global -= valor
         print("Saque efetuado com sucesso.")
     else:
-        print("Valor invalido!")
+        print("Valor inválido para saque!")
 
 
-while section != 0:
-    section = input(
-        """
-        Digite:
-        1 - Depositar
-        2 - Sacar
-        3 - Extrato
-        0 - Fechar o programa
-        """
-    )
+def extrato():
+    global conta_global
+    print(f"Valor em conta é: {conta_global}")
 
-    if int(section) == 1:
-        deposito = int(input("Quanto deseja depositar?\n"))
-        depositar(deposito)
-    elif int(section) == 2:
-        saque = int(input("Quanto deseja sacar?\n"))
-        sacar(saque)
-    elif int(section) == 3:
-        print(f"Valor em conta é: {conta_global}")
-    elif int(section) == 0:
-        print("Progama finalizado! Obrigado por usar serviços DIO.")
-    else:
-        print("Valor invalido! Digite Novamente.")
+
+def main():
+    print("Bem-vindo ao banco DIO\nQual operação deseja executar?\n")
+    while True:
+        try:
+            opcao = int(
+                input(
+                    """Digite:
+                    1 - Depositar
+                    2 - Sacar
+                    3 - Extrato
+                    0 - Fechar o programa\n
+                    """
+                )
+            )
+            if opcao == 1:
+                valor = int(input("Quanto deseja depositar?\n"))
+                depositar(valor)
+            elif opcao == 2:
+                valor = int(input("Quanto deseja sacar?\n"))
+                sacar(valor)
+            elif opcao == 3:
+                extrato()
+            elif opcao == 0:
+                print("Programa finalizado! Obrigado por usar DIO.")
+                break
+            else:
+                print("Opção inválida! Digite novamente.")
+        except ValueError:
+            print("Entrada inválida! Por favor, digite um número.")
+
+
+if __name__ == "__main__":
+    main()
