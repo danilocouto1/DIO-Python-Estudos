@@ -1,82 +1,137 @@
-# Banco Dio - DIO-Python-Estudos
+# 🏦 Banco DIO - DIO-Python-Estudos
 
-Bem-vindo à branch "Banco-Dio" do repositório "DIO-Python-Estudos", mantido por Danilo Couto Pereira Santos. Esta branch é dedicada a um projeto de simulação de operações bancárias, como parte das atividades do curso de Python focado em Inteligência Artificial e análise de dados oferecido pela Digital Innovation One (DIO).
+Bem-vindo à branch **"Banco-Dio"** do repositório **"DIO-Python-Estudos"**, mantido por **Danilo Couto Pereira Santos**.
 
-## Funcionalidades
+Este projeto faz parte do curso de **Python com foco em Inteligência Artificial e Análise de Dados**, oferecido pela **Digital Innovation One (DIO)**, e simula um sistema bancário mais completo, incluindo gerenciamento de usuários e contas.
 
-Este programa simula um sistema bancário simples, permitindo ao usuário realizar operações como:
+---
 
-- **Depositar**: Adiciona dinheiro à conta.
-- **Sacar**: Retira dinheiro da conta, se houver saldo suficiente.
-- **Extrato**: Mostra o saldo atual.
-- **Fechar o Programa**: Encerra a execução do programa.
+## 🚀 Funcionalidades
 
-## Como Usar
+O sistema bancário agora possui funcionalidades mais avançadas:
 
-Para executar o programa dentro desta branch, siga os passos abaixo:
+### 💰 Operações Bancárias
 
-1. Clone o repositório DIO-Python-Estudos e navegue para esta branch:
+#### Depositar
+- Permite adicionar saldo à conta.
+- Apenas valores positivos são aceitos.
+- Registra a operação no extrato.
+
+#### Sacar
+Permite realizar saques com as seguintes regras:
+- Limite de **R$ 500 por saque**
+- Máximo de **3 saques por execução**
+- Não permite saque maior que o saldo disponível
+- Registra a operação no extrato
+
+#### Extrato
+- Exibe todas as movimentações realizadas.
+- Mostra o saldo atual formatado.
+- Caso não haja movimentações, informa ao usuário.
+
+---
+
+### 👤 Gestão de Usuários
+
+#### Criar Usuário
+- CPF validado e formatado automaticamente (`###.###.###-##`)
+- Data de nascimento validada (formato `dd-mm-aaaa`)
+- Endereço validado no formato:
+  ```
+  cidade - UF
+  ```
+- Impede cadastro de CPF duplicado.
+
+---
+
+### 🏦 Gestão de Contas
+
+#### Criar Conta
+- Conta vinculada a um usuário existente.
+- Agência padrão: `0001`
+- Número da conta gerado automaticamente.
+
+#### Listar Contas
+- Exibe todas as contas cadastradas.
+
+---
+
+## 🛠️ Conceitos Aplicados no Código
+
+Este projeto utiliza diversos conceitos importantes de Python:
+
+- Funções com parâmetros posicionais (`/`)
+- Funções com parâmetros nomeados obrigatórios (`*`)
+- Manipulação de strings
+- Expressões regulares (`re`)
+- Manipulação de datas (`datetime`)
+- Listas e dicionários
+- Tratamento de exceções (`try/except`)
+- Validação de dados
+- Organização modular de código
+- Boas práticas com `main()` e `if __name__ == "__main__"`
+
+---
+
+## ▶️ Como Executar
+
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/danilocouto1/DIO-Python-Estudos.git
+```
+
+2. Acesse a pasta do projeto:
+
+```bash
 cd DIO-Python-Estudos
+```
+
+3. Vá para a branch correta:
+
+```bash
 git checkout Banco-Dio
 ```
 
-2. Execute o programa no terminal ou em um ambiente de desenvolvimento Python.
+4. Execute o programa:
 
-## Código Principal
-
-```python
-print(
-    """Bem vindo ao banco DIO
-        Qual operação deseja executar?
-        """
-)
-section = -1
-conta_global = 0
-
-def depositar(deposito: int):
-    global conta_global
-    conta_global += deposito
-
-def sacar(saque: int):
-    global conta_global
-    if saque > conta_global:
-        print("Valor acima do permitido!")
-    else:
-        conta_global -= saque
-        print("Saque efetuado com sucesso.")
-
-while section != 0:
-    section = int(
-        input(
-            """
-        Digite:
-        1 - Depositar
-        2 - Sacar
-        3 - Extrato
-        0 - Fechar o programa
-        """
-        )
-    )
-    if section == 1:
-        deposito = int(input("Quanto deseja depositar?\n"))
-        depositar(deposito)
-    elif section == 2:
-        saque = int(input("Quanto deseja sacar?\n"))
-        sacar(saque)
-    elif section == 3:
-        print(f"Valor em conta é: {conta_global}")
-    elif section == 0:
-        print("Programa finalizado! Obrigado por usar os serviços DIO.")
-    else:
-        print("Valor inválido! Digite novamente.")
+```bash
+python nome_do_arquivo.py
 ```
 
-## Contato
+---
 
-- **Nome:** Danilo Couto Pereira Santos
-- **Telefone:** +55 (73) 9 8851-3272
-- **E-mail:** [dansantos45@hotmail.com](mailto:dansantos45@hotmail.com)
-- **LinkedIn:** [Danilo Couto Pereira Santos](https://www.linkedin.com/in/danilocoutopsantos/)
+## 📋 Menu do Sistema
+
+Ao executar, o sistema exibirá:
+
+```
+Digite:
+1 - Depositar
+2 - Sacar
+3 - Extrato
+4 - Criar Usuário
+5 - Criar Conta
+6 - Listar Conta
+0 - Fechar o programa
+```
+
+---
+
+## 📌 Regras Importantes
+
+- Limite por saque: **R$ 500**
+- Máximo de saques: **3 por execução**
+- Agência padrão: **0001**
+- CPF deve conter 11 dígitos
+- Data deve estar no formato: **dd-mm-aaaa**
+- Endereço deve conter: **Cidade - UF**
+
+---
+
+## 📞 Contato
+
+**Nome:** Danilo Couto Pereira Santos  
+📱 Telefone: +55 (73) 9 8851-3272  
+📧 E-mail: dansantos45@hotmail.com  
+🔗 LinkedIn: https://www.linkedin.com/in/danilocoutopsantos/
